@@ -6,15 +6,10 @@ regla de CSS consta de dos partes
 2) el bloque de declaraciones{
     atributo:valor;
 atributo-de-mas-de-dos-palabras:otro-valor;
-} */
-/* 
-son mala practica porque son bloqueantes a la hora de que el navegador lea las horjas
+ 
 
 
-@import url(otra-hoja.css);
-
- */
-/* links de referencia y documetacion
+    links de referencia y documetacion
   - https://es.wikipedia.org/wiki/Hoja_de...
   - https://www.w3.org/html/logo/
   - https://www.w3.org/standards/webdesig...
@@ -24,10 +19,20 @@ son mala practica porque son bloqueantes a la hora de que el navegador lea las h
   - https://caniuse.com/
   - https://codeguide.co/
  */
+
+/* son mala practica porque son bloqueantes a la hora de que el navegador lea las horjas */
+
+@import url(otra-hoja.css);
+
+
 h1 {
+
     /* color: orangered; */
+
     background-color: black;
 }
+
+
 
 /*
     Selectores Básicos
@@ -310,6 +315,70 @@ Es vital entender este concepto para poder entender como se aplican y en algunas
 
     La cascada es el mecanismo en que el navedador aplica los estilos.
     Y toma en cuenta lo siguiente en este orden
-    1)El origen del 
+    1)El origen del cdigo:
+    - El User Agent (los estilos por defecto del navegados)
+    - Personalizacion del Usuario
+    - Los Estilos de Autor
+    2) La Especificidad del Selector
+    3) Orden de Aparicion
+
+
+    La especificidad es el peso que tien un selector cuando hay conflicto de estilos. Se calcula
+    de la siguiente manera:
+    
+    Etiquetas y Paeudoelementos................ 0,0,0,1
+    Clases, Atributos y Pseudocalses........... 0,0,1,0
+    Identificadores............................ 0,1,0,0
+    Estilos en Linea........................... 1,0,0,0
+    !Important................................. rompe la especifidad
+
+    La Herencia: es la capacidad de un selector de obtener (heredar) los valores de sus ancestros
+    mas cercanos, para aplicarla utilizaremos un valor inherit, si queremos evitarla podemos
+    asignar otro valor o inicializar la propiedad en cuestión con el valor initial
+
 
 */
+
+blockquote#cita-marco.cita-marco{
+    background-color: lightsteelblue;
+}
+ 
+blockquote{
+    background-color: burlywood;
+}
+
+#cita-marco{
+    background-color: lightgreen;
+}
+
+blockquote.cita-marco{
+    background-color: tomato;
+}
+
+.cita-marco{
+    background-color: mediumaquamarine !important;
+
+}
+
+.cita-marco{
+    background-color: cornflowerblue;
+}
+blockquote#cita-marco{
+    background-color: lightsalmon;
+}
+.cita-marco{
+    background-color: moccasin !important;
+    background-color: darkorange !important;
+    font-size: 32px;
+    border-style:dotted;
+    border-color: red;
+}
+.cita-marco cite{ 
+    background-color: azure;
+    background-color: inherit;
+    font-size: 24px;
+    font-size: initial;
+    border-style:dotted;
+    border-color: red;
+   
+}   
